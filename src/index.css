@@ -1,8 +1,6 @@
-@import "tailwindcss";
-
-* {
-  margin: 0;
-  padding: 0;
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
 
@@ -36,3 +34,20 @@ div {
     width: 90%;
   }
 }
+
+.nav-button {
+  max-width: 24px;
+  max-height: 24px;
+}
+
+@media (width > 400px) {
+  .navigation-bar {
+    height: 26px; /* Icon gets bigger when the container width exceeds 400px */
+  }
+  .nav-button {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@import "tailwindcss";
