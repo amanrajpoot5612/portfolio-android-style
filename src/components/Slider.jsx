@@ -12,10 +12,17 @@ import galleryImg from "../assets/apps/gallery.png";
 import chromeImg from "../assets/apps/chrome.png";
 import pdfImg from "../assets/apps/pdf.png";
 import gmailImg from "../assets/apps/gmail.png";
+import githubImg from "../assets/apps/github.png";
+import instagramImg from "../assets/apps/instagram.png";
+import linkedinImg from "../assets/apps/linkedin.png";
+import meetImg from "../assets/apps/meet.png";
+import mapsImg from "../assets/apps/maps.png";
+import twitterImg from "../assets/apps/twitter.png";
+// import gmailImg from "../assets/apps/gmail.png";
 
 const Slider = ({ className }) => {
   const slide1 = {
-    0: { name: "Camera", icon: instagram },
+    0: { name: "Camera", icon: cameraImg },
     1: { name: "Projects", icon: filesImg },
     2: { name: "Gallery", icon: galleryImg },
     3: { name: "About", icon: chromeImg },
@@ -23,12 +30,12 @@ const Slider = ({ className }) => {
     5: { name: "Contact", icon: gmailImg },
   };
   const slide2 = {
-    0: { name: "Camera", icon: instagram },
-    1: { name: "Projects", icon: filesImg },
-    2: { name: "Gallery", icon: galleryImg },
-    3: { name: "About", icon: chromeImg },
-    4: { name: "Resume", icon: pdfImg },
-    5: { name: "Contact", icon: gmailImg },
+    0: { name: "Github", icon: githubImg },
+    1: { name: "Instagram", icon: instagramImg },
+    2: { name: "Linkedin", icon: linkedinImg },
+    3: { name: "Meet", icon: meetImg },
+    4: { name: "Maps", icon: mapsImg },
+    5: { name: "X", icon: twitterImg },
   };
   const slide3 = {
     0: { name: "Camera", icon: instagram },

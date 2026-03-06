@@ -5,12 +5,14 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import "./index.css";
+import Boot from "./components/ui/Boot";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
+          <Route path="/boot" element={<Boot />} />
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
