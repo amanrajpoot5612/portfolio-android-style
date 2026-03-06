@@ -10,7 +10,7 @@ const Boot = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/", { replace: true });
+      navigate("/home", { replace: true });
     }, 7000);
 
     return () => clearTimeout(timer);
