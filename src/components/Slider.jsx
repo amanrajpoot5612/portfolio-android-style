@@ -18,9 +18,11 @@ import linkedinImg from "../assets/apps/linkedin.png";
 import meetImg from "../assets/apps/meet.png";
 import mapsImg from "../assets/apps/maps.png";
 import twitterImg from "../assets/apps/twitter.png";
+import { useNavigate } from "react-router-dom";
 // import gmailImg from "../assets/apps/gmail.png";
 
 const Slider = ({ className }) => {
+  const navigate = useNavigate();
   const slide1 = {
     0: { name: "Camera", icon: cameraImg },
     1: { name: "Projects", icon: filesImg },
@@ -61,6 +63,9 @@ const Slider = ({ className }) => {
                         src={app.icon}
                         alt={app.name}
                         className="w-full aspect-square object-contain drop-shadow-lg"
+                        onClick={() => {
+                          navigate("/camera");
+                        }}
                       />
                     </div>
 
