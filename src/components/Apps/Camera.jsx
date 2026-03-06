@@ -86,8 +86,27 @@ export default function CameraApp() {
     setTimeout(() => setFlash(false), 120);
   };
 
-  const switchCamera = () => {
-    setFacingMode((prev) => (prev === "environment" ? "user" : "environment"));
+  const switchCamera = async () => {
+    // stop current stream
+    if (stream) {
+      stream.getTracks().forEach((track) => track.stop());
+    }
+
+    const newFacing = facingMode === "environment" ? "user" : "environment";
+
+    try {
+      const newStream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: newFacing },
+        audio: false,
+      });
+
+      videoRef.current.srcObject = newStream;
+
+      setStream(newStream);
+      setFacingMode(newFacing);
+    } catch (err) {
+      console.error("Camera switch failed", err);
+    }
   };
 
   const handleTouchMove = (e) => {
