@@ -7,6 +7,8 @@ import Projects from "./pages/Projects";
 import "./index.css";
 import Boot from "./components/ui/Boot";
 import CameraApp from "./components/Apps/Camera.jsx";
+import Gallery from "./components/Apps/Gallery/Gallery.jsx";
+import AppLayout from "./layout/AppLayout.jsx";
 
 const App = () => {
   return (
@@ -18,6 +20,10 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/camera" element={<CameraApp />} />
+          <Route
+            path="/gallery"
+            element={<AppLayout Children={<Gallery />} />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
