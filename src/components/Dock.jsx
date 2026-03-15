@@ -1,16 +1,11 @@
 import React from "react";
 import instagram from "../assets/apps/instagram.svg";
-import cameraImg from "../assets/apps/native-apps/Camera.png";
 import filesImg from "../assets/apps/native-apps/MyFiles.png";
-import galleryImg from "../assets/apps/native-apps/Gallery.png";
 import chromeImg from "../assets/apps/google/Chrome.png";
 import pdfImg from "../assets/apps/native-apps/WriteonPDF.png";
 import gmailImg from "../assets/apps/native-apps/Email.png";
-import gmailImg from "../assets/apps/native-apps/Email.png";
 import cameraImg from "../assets/apps/native-apps/Camera.png";
 import galleryImg from "../assets/apps/native-apps/Gallery.png";
-import chromeImg from "../assets/apps/google/Chrome.png";
-import filesImg from "../assets/apps/native-apps/MyFiles.png";
 
 const Dock = () => {
   const apps = [
