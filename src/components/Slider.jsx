@@ -26,16 +26,30 @@ const SLIDES = [
     { name: "Gallery", icon: galleryImg, path: "gallery" },
     { name: "About", icon: chromeImg, path: "chrome" },
     { name: "Resume", icon: pdfImg, path: "resume" },
-    { name: "Contact", icon: gmailImg, path: "contact" },
+    {
+      name: "Contact",
+      icon: gmailImg,
+      externalUrl: "mailto:amanrajpoot5612@gmail.com",
+      popup: {
+        label: "Contact",
+        desc: "Best way to reach me for collabs, freelance, or just a chat.",
+        accent: "#e8d5fb",
+        gradient: "linear-gradient(135deg,#161b22,#0d1117)",
+        actions: [
+          { label: "Open Profile", primary: true },
+          { label: "Copy Link" },
+        ],
+      },
+    },
   ],
   [
     {
       name: "GitHub",
       icon: githubImg,
-      externalUrl: "https://github.com",
+      externalUrl: "https://github.com/amanrajpoot5612",
       popup: {
         label: "GitHub",
-        desc: "View my repos & contributions",
+        desc: "I do projects for myself. Stars ⭐ are welcome.",
         accent: "#e8d5fb",
         gradient: "linear-gradient(135deg,#161b22,#0d1117)",
         actions: [
@@ -47,10 +61,10 @@ const SLIDES = [
     {
       name: "Instagram",
       icon: instagramImg,
-      externalUrl: "https://instagram.com",
+      externalUrl: "https://www.instagram.com/amannnn_197",
       popup: {
         label: "Instagram",
-        desc: "Follow me for photos & updates",
+        desc: "📸 Capturing moments & shipping pixels",
         accent: "#fd1d1d",
         gradient: "linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)",
         actions: [
@@ -62,10 +76,10 @@ const SLIDES = [
     {
       name: "LinkedIn",
       icon: linkedinImg,
-      externalUrl: "https://linkedin.com",
+      externalUrl: "http://linkedin.com/in/amanrajpoot5612",
       popup: {
         label: "LinkedIn",
-        desc: "Connect with me professionally",
+        desc: "Full Stack Developer @ RestoCare | React • Node • TypeScript",
         accent: "#0a66c2",
         gradient: "linear-gradient(135deg,#0a66c2,#004182)",
         actions: [
@@ -77,7 +91,7 @@ const SLIDES = [
     {
       name: "Meet",
       icon: meetImg,
-      externalUrl: "https://meet.google.com",
+      externalUrl: "https://calendar.app.google/Gga526zjZiZGx8oN8",
       popup: {
         label: "Google Meet",
         desc: "Schedule a quick call with me",
@@ -89,10 +103,10 @@ const SLIDES = [
     {
       name: "Maps",
       icon: mapsImg,
-      externalUrl: "https://maps.google.com",
+      externalUrl: "https://maps.app.goo.gl/nVSGVhiTrU64D8cD6",
       popup: {
         label: "Google Maps",
-        desc: "Find me in San Francisco, CA",
+        desc: "Find me walking around the streets of Delhi NCR",
         accent: "#ea4335",
         gradient: "linear-gradient(135deg,#ea4335,#a50e0e)",
         actions: [{ label: "Open Maps", primary: true }],
@@ -101,13 +115,28 @@ const SLIDES = [
     {
       name: "X",
       icon: twitterImg,
-      externalUrl: "https://x.com",
+      externalUrl: "https://x.com/amannnnrajput",
       popup: {
         label: "X (Twitter)",
-        desc: "Follow my dev journey & thoughts",
+        desc: "Follow my dev journey & thoughts. Full stack dev. Building in public. Opinions are my own.",
         accent: "#fff",
         gradient: "linear-gradient(135deg,#000,#1a1a2e)",
         actions: [{ label: "Open X", primary: true }, { label: "Copy Handle" }],
+      },
+    },
+    {
+      name: "Contact",
+      icon: gmailImg,
+      externalUrl: "https://github.com/amanrajpoot5612",
+      popup: {
+        label: "Contact",
+        desc: "I do projects for myself. Stars ⭐ are welcome.",
+        accent: "#e8d5fb",
+        gradient: "linear-gradient(135deg,#161b22,#0d1117)",
+        actions: [
+          { label: "Open Profile", primary: true },
+          { label: "Copy Link" },
+        ],
       },
     },
   ],

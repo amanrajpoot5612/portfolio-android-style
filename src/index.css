@@ -69,4 +69,29 @@ div {
     opacity: 0;
   }
 }
+
+/* Scale down phone mockup on small browser windows */
+@media (max-height: 820px) {
+  :root {
+    --device-scale: 0.85;
+  }
+}
+@media (max-height: 700px) {
+  :root {
+    --device-scale: 0.7;
+  }
+}
+@media (max-height: 600px) {
+  :root {
+    --device-scale: 0.58;
+  }
+}
+
+/* Also prevent the screen from being too tall */
+@media (max-width: 500px) {
+  :root {
+    --device-scale: 0.88;
+  }
+}
+
 @import "tailwindcss";
