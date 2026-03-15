@@ -12,8 +12,8 @@ import chromeImg from "../assets/apps/google/Chrome.png";
 import githubImg from "../assets/apps/socials/github.png";
 import instagramImg from "../assets/apps/socials/instagram.png";
 import linkedinImg from "../assets/apps/socials/linkedin.png";
-import meetImg from "../assets/apps/google/meet.png";
-import mapsImg from "../assets/apps/google/maps.png";
+import meetImg from "../assets/apps/google/Meet.png";
+import mapsImg from "../assets/apps/google/Maps.png";
 import twitterImg from "../assets/apps/socials/twitter.png";
 
 // ─────────────────────────────────────────────
@@ -529,7 +529,7 @@ const Slider = ({ className }) => {
           app={activePopup.app}
           anchorRect={activePopup.rect}
           onClose={closePopup}
-        />  
+        />
       )}
     </>
   );
