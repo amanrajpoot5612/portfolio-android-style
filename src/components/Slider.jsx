@@ -116,9 +116,11 @@ const SLIDES = [
 // ─────────────────────────────────────────────
 // One UI popup component
 // ─────────────────────────────────────────────
-function OneUIPopup({ app, anchorRect, onClose }) {
+// ─────────────────────────────────────────────
+// One UI popup component — container-aware
+// ─────────────────────────────────────────────
+function OneUIPopup({ app, anchorRect, containerRect, onClose }) {
   const [show, setShow] = useState(false);
-  const popupRef = useRef(null);
 
   useEffect(() => {
     requestAnimationFrame(() => setShow(true));
@@ -145,29 +147,39 @@ function OneUIPopup({ app, anchorRect, onClose }) {
 
   const p = app.popup;
 
-  // Figure out popup position: prefer below icon, flip up near bottom
-  const viewH = window.innerHeight;
-  const popupH = 200;
-  const spaceBelow = anchorRect ? viewH - anchorRect.bottom : 200;
-  const placeAbove = spaceBelow < popupH + 20;
+  // ── All positions relative to the CONTAINER, not window ──
+  const POPUP_W = 180;
+  const POPUP_H = 210;
+  const MARGIN = 8;
 
-  const popupLeft = anchorRect
-    ? Math.min(Math.max(anchorRect.left - 20, 8), window.innerWidth - 188)
-    : 40;
-
-  const popupTop = anchorRect
-    ? placeAbove
-      ? anchorRect.top - popupH - 8
-      : anchorRect.bottom + 8
+  // Icon center relative to container
+  const iconCenterX = anchorRect
+    ? (anchorRect.left + anchorRect.right) / 2 - (containerRect?.left ?? 0)
+    : 60;
+  const iconBottom = anchorRect
+    ? anchorRect.bottom - (containerRect?.top ?? 0)
     : 100;
+  const iconTop = anchorRect ? anchorRect.top - (containerRect?.top ?? 0) : 80;
+
+  const containerW = containerRect?.width ?? 300;
+  const containerH = containerRect?.height ?? 600;
+
+  // Horizontal: center on icon, clamp within container
+  let left = iconCenterX - POPUP_W / 2;
+  left = Math.max(MARGIN, Math.min(left, containerW - POPUP_W - MARGIN));
+
+  // Vertical: prefer below, flip above if not enough room
+  const spaceBelow = containerH - iconBottom;
+  const placeAbove = spaceBelow < POPUP_H + MARGIN;
+  const top = placeAbove ? iconTop - POPUP_H - MARGIN : iconBottom + MARGIN;
 
   return (
     <>
-      {/* Scrim */}
+      {/* Scrim — fills only the container */}
       <div
         onClick={handleClose}
         style={{
-          position: "fixed",
+          position: "absolute",
           inset: 0,
           zIndex: 200,
           background: "rgba(0,0,0,0.35)",
@@ -177,16 +189,15 @@ function OneUIPopup({ app, anchorRect, onClose }) {
         }}
       />
 
-      {/* Popup bubble — Samsung One UI style */}
+      {/* Popup bubble */}
       <div
-        ref={popupRef}
         role="dialog"
         aria-label={`${p.label} options`}
         style={{
-          position: "fixed",
-          left: popupLeft,
-          top: popupTop,
-          width: 180,
+          position: "absolute",
+          left,
+          top,
+          width: POPUP_W,
           zIndex: 201,
           background: "rgba(30,30,36,0.97)",
           borderRadius: 20,
@@ -196,8 +207,8 @@ function OneUIPopup({ app, anchorRect, onClose }) {
             "0 8px 32px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.06) inset",
           transform: show
             ? "scale(1) translateY(0)"
-            : "scale(0.82) translateY(placeAbove ? 10px : -10px)",
-          transformOrigin: placeAbove ? "bottom left" : "top left",
+            : `scale(0.82) translateY(${placeAbove ? "10px" : "-10px"})`,
+          transformOrigin: placeAbove ? "bottom center" : "top center",
           opacity: show ? 1 : 0,
           transition:
             "transform 0.22s cubic-bezier(0.34,1.2,0.64,1), opacity 0.18s ease",
@@ -215,7 +226,6 @@ function OneUIPopup({ app, anchorRect, onClose }) {
             overflow: "hidden",
           }}
         >
-          {/* Gloss */}
           <div
             style={{
               position: "absolute",
@@ -267,10 +277,8 @@ function OneUIPopup({ app, anchorRect, onClose }) {
           </div>
         </div>
 
-        {/* Divider */}
         <div style={{ height: 1, background: "rgba(255,255,255,0.07)" }} />
 
-        {/* Actions */}
         <div style={{ padding: "4px 0" }}>
           {p.actions.map((action, i) => (
             <button
@@ -285,9 +293,7 @@ function OneUIPopup({ app, anchorRect, onClose }) {
                 display: "flex",
                 alignItems: "center",
                 gap: 10,
-                textAlign: "left",
                 transition: "background 0.1s",
-                borderRadius: 0,
               }}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.background = "rgba(255,255,255,0.07)")
@@ -297,7 +303,6 @@ function OneUIPopup({ app, anchorRect, onClose }) {
                 (e.currentTarget.style.background = "rgba(255,255,255,0.12)")
               }
             >
-              {/* Dot indicator for primary */}
               <div
                 style={{
                   width: 6,
@@ -327,7 +332,6 @@ function OneUIPopup({ app, anchorRect, onClose }) {
             </button>
           ))}
 
-          {/* Cancel */}
           <div
             style={{
               height: 1,
@@ -376,10 +380,8 @@ function OneUIPopup({ app, anchorRect, onClose }) {
     </>
   );
 }
-
 // ─────────────────────────────────────────────
-// App icon
-// ─────────────────────────────────────────────
+// AppIcon — unchanged except onOpenPopup receives rect as before
 function AppIcon({ app, onOpenPopup, navigate }) {
   const iconRef = useRef(null);
   const [pressed, setPressed] = useState(false);
@@ -401,7 +403,8 @@ function AppIcon({ app, onOpenPopup, navigate }) {
       onMouseUp={() => setPressed(false)}
       onMouseLeave={() => setPressed(false)}
       onTouchStart={() => setPressed(true)}
-      onTouchEnd={() => {
+      onTouchEnd={(e) => {
+        e.preventDefault();
         setPressed(false);
         handleTap();
       }}
@@ -463,13 +466,17 @@ function AppIcon({ app, onOpenPopup, navigate }) {
 }
 
 // ─────────────────────────────────────────────
-// Slider
+// Slider — measures its own container rect
 // ─────────────────────────────────────────────
 const Slider = ({ className }) => {
   const navigate = useNavigate();
-  const [activePopup, setActivePopup] = useState(null); // { app, rect }
+  const containerRef = useRef(null);
+  const [activePopup, setActivePopup] = useState(null);
 
-  const openPopup = (app, rect) => setActivePopup({ app, rect });
+  const openPopup = (app, iconRect) => {
+    const containerRect = containerRef.current?.getBoundingClientRect() ?? null;
+    setActivePopup({ app, iconRect, containerRect });
+  };
   const closePopup = () => setActivePopup(null);
 
   return (
@@ -478,59 +485,66 @@ const Slider = ({ className }) => {
         @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap');
       `}</style>
 
-      <Swiper
-        spaceBetween={0}
-        slidesPerView={1}
-        className={className}
-        // Prevent swipe from firing while popup is open
-        allowTouchMove={!activePopup}
+      {/* This wrapper must be position:relative so absolute popup stays inside */}
+      <div
+        ref={containerRef}
+        style={{ position: "relative", width: "100%", height: "100%" }}
       >
-        {SLIDES.map((apps, slideIndex) => (
-          <SwiperSlide key={slideIndex}>
-            <div
-              style={{
-                height: "100%",
-                display: "grid",
-                gridTemplateColumns: "repeat(5, 1fr)",
-                gridTemplateRows: "repeat(7, 1fr)",
-                gap: 8,
-                padding: 10,
-              }}
-            >
-              {Array.from({ length: 35 }).map((_, i) => {
-                const app = apps[i];
-                return (
-                  <div
-                    key={i}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {app && (
-                      <AppIcon
-                        app={app}
-                        navigate={navigate}
-                        onOpenPopup={openPopup}
-                      />
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        <Swiper
+          spaceBetween={0}
+          slidesPerView={1}
+          className={className}
+          allowTouchMove={!activePopup}
+          style={{ width: "100%", height: "100%" }}
+        >
+          {SLIDES.map((apps, slideIndex) => (
+            <SwiperSlide key={slideIndex}>
+              <div
+                style={{
+                  height: "100%",
+                  display: "grid",
+                  gridTemplateColumns: "repeat(5, 1fr)",
+                  gridTemplateRows: "repeat(7, 1fr)",
+                  gap: 8,
+                  padding: 10,
+                }}
+              >
+                {Array.from({ length: 35 }).map((_, i) => {
+                  const app = apps[i];
+                  return (
+                    <div
+                      key={i}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {app && (
+                        <AppIcon
+                          app={app}
+                          navigate={navigate}
+                          onOpenPopup={openPopup}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-      {/* Portal-like popup — rendered outside Swiper so it overlays everything */}
-      {activePopup && (
-        <OneUIPopup
-          app={activePopup.app}
-          anchorRect={activePopup.rect}
-          onClose={closePopup}
-        />
-      )}
+        {/* Popup lives inside the container div, not outside Swiper */}
+        {activePopup && (
+          <OneUIPopup
+            app={activePopup.app}
+            anchorRect={activePopup.iconRect}
+            containerRect={activePopup.containerRect}
+            onClose={closePopup}
+          />
+        )}
+      </div>
     </>
   );
 };
