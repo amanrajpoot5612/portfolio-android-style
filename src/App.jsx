@@ -11,7 +11,6 @@ import Gallery from "./components/Apps/Gallery/Gallery.jsx";
 import AppLayout from "./layout/AppLayout.jsx";
 import Resume from "./components/Apps/Resume.jsx";
 import Chrome from "./components/Apps/Chrome.jsx";
-import SocialsApp from "./components/Apps/Socials/SocialsApp.jsx";
 
 const App = () => {
   return (
@@ -29,7 +28,7 @@ const App = () => {
           />
           <Route path="/resume" element={<AppLayout Children={<Resume />} />} />
           <Route path="/chrome" element={<AppLayout Children={<Chrome />} />} />
-          <Route path="/socials" element={<AppLayout Children={<SocialsApp />} />} />
+          {/* <Route path="/socials" element={<AppLayout Children={<SocialsApp />} />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

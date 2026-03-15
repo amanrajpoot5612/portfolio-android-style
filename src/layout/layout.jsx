@@ -10,6 +10,10 @@ import back from "../assets/navigation/chevron-left.svg";
 import back1 from "../assets/navigation/chevron-left-b.svg";
 import back2 from "../assets/navigation/back-arrow-1.svg";
 import { useState } from "react";
+import Battery from "../assets/topbar/battery.svg";
+import Mute from "../assets/topbar/mute.svg";
+import Signal from "../assets/topbar/signal.svg";
+import Clock from "../utils/Clock";
 
 export default function MainLayout() {
   const [activeBtn, setActiveBtn] = useState(null);
@@ -88,7 +92,7 @@ export default function MainLayout() {
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-black/20 z-10" />
 
           {/* YOUR SCREEN CONTENT */}
-          <div className="w-full h-full overflow-hidden relative z-0">
+          <div className="w-full h-full overflow-y-auto relative z-0">
             <Outlet />
           </div>
 
@@ -143,7 +147,7 @@ export default function MainLayout() {
             >
               <span
                 className={` px-4 py-1 rounded-md transition-colors duration-300 ${activeBtn === "home" ? "bg-orange-600" : ""}`}
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/home")}
               >
                 <img src={home24} alt="" className="nav-button" />
               </span>
