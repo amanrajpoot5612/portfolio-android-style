@@ -1,7 +1,7 @@
 import React from "react";
-import linkedinAnimated from "../assets/icons/linkedin-animated.gif";
-import twitterAnimated from "../assets/icons/twitter-animated.gif";
-import githubAnimated from "../assets/icons/github-animated.gif";
+// import linkedinAnimated from "../assets/icons/linkedin-animated.gif";
+// import twitterAnimated from "../assets/icons/twitter-animated.gif";
+// import githubAnimated from "../assets/icons/github-animated.gif";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {

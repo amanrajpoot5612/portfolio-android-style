@@ -1,0 +1,66 @@
+{
+  "name": "Alex Rivera",
+  "title": "Full Stack Developer",
+  "tagline": "I build things for the web & mobile",
+  "avatar": "/assets/avatar.jpg",
+  "location": "San Francisco, CA",
+  "available": true,
+  "bio": [
+    "I'm a developer obsessed with crafting experiences that feel native, fast, and beautiful. I work across the stack — from pixel-perfect UIs to resilient backend systems.",
+    "When I'm not shipping code, I'm usually tinkering with hardware, contributing to open source, or exploring design systems that push what interfaces can feel like."
+  ],
+  "stats": [
+    { "label": "Years Exp", "value": "3+" },
+    { "label": "Projects", "value": "24" },
+    { "label": "Commits", "value": "1.2k" },
+    { "label": "Coffees", "value": "∞" }
+  ],
+  "skills": [
+    { "name": "React / RN", "level": 92, "color": "#61dafb" },
+    { "name": "Node.js", "level": 85, "color": "#83cd29" },
+    { "name": "TypeScript", "level": 80, "color": "#3178c6" },
+    { "name": "Tailwind", "level": 90, "color": "#38bdf8" },
+    { "name": "PostgreSQL", "level": 72, "color": "#336791" },
+    { "name": "Figma", "level": 78, "color": "#a259ff" }
+  ],
+  "timeline": [
+    {
+      "year": "2024",
+      "role": "Senior Frontend Dev",
+      "place": "Acme Corp",
+      "desc": "Led redesign of core product UI, improving engagement by 40%."
+    },
+    {
+      "year": "2023",
+      "role": "Full Stack Engineer",
+      "place": "Startup XYZ",
+      "desc": "Built real-time collaboration features used by 50k+ users."
+    },
+    {
+      "year": "2022",
+      "role": "Junior Developer",
+      "place": "Agency ABC",
+      "desc": "Delivered 12 client projects across web and mobile platforms."
+    },
+    {
+      "year": "2021",
+      "role": "CS Graduate",
+      "place": "State University",
+      "desc": "B.Sc. Computer Science. Thesis on adaptive UI rendering."
+    }
+  ],
+  "interests": [
+    "Open Source",
+    "UI Design",
+    "Android Dev",
+    "Photography",
+    "Chess",
+    "Mechanical Keyboards"
+  ],
+  "social": [
+    { "label": "GitHub", "url": "https://github.com", "icon": "github" },
+    { "label": "LinkedIn", "url": "https://linkedin.com", "icon": "linkedin" },
+    { "label": "Twitter", "url": "https://twitter.com", "icon": "twitter" },
+    { "label": "Email", "url": "mailto:alex@example.com", "icon": "mail" }
+  ]
+}
