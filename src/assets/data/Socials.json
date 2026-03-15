@@ -1,0 +1,84 @@
+[
+  {
+    "id": "instagram",
+    "label": "Instagram",
+    "handle": "@alex.rivera",
+    "url": "https://instagram.com/alex.rivera",
+    "accent": "#E1306C",
+    "gradient": "linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)",
+    "preview": {
+      "followers": "2.4k",
+      "posts": "138",
+      "bio": "📸 Capturing moments & shipping pixels",
+      "recentImages": ["/assets/ig1.jpg", "/assets/ig2.jpg", "/assets/ig3.jpg"]
+    }
+  },
+  {
+    "id": "twitter",
+    "label": "X (Twitter)",
+    "handle": "@alexrivera_dev",
+    "url": "https://x.com/alexrivera_dev",
+    "accent": "#fff",
+    "gradient": "linear-gradient(135deg, #000, #1a1a2e)",
+    "preview": {
+      "followers": "1.1k",
+      "following": "340",
+      "bio": "Full stack dev. Building in public. Opinions are my own.",
+      "recentTweet": "Just shipped dark mode for my portfolio. Took 3 days. Worth every hour. 🚀 #buildinpublic"
+    }
+  },
+  {
+    "id": "github",
+    "label": "GitHub",
+    "handle": "alex-rivera",
+    "url": "https://github.com/alex-rivera",
+    "accent": "#e8d5fb",
+    "gradient": "linear-gradient(135deg, #161b22, #0d1117)",
+    "preview": {
+      "followers": "89",
+      "repos": "32",
+      "bio": "Open source enthusiast. Stars ⭐ are welcome.",
+      "streak": "47 day streak 🔥",
+      "topRepos": ["portfolio-os", "react-native-kit", "api-boilerplate"]
+    }
+  },
+  {
+    "id": "linkedin",
+    "label": "LinkedIn",
+    "handle": "Alex Rivera",
+    "url": "https://linkedin.com/in/alex-rivera",
+    "accent": "#0a66c2",
+    "gradient": "linear-gradient(135deg, #0a66c2, #004182)",
+    "preview": {
+      "connections": "500+",
+      "bio": "Full Stack Developer @ Acme Corp | React • Node • TypeScript",
+      "openTo": "Open to opportunities"
+    }
+  },
+  {
+    "id": "youtube",
+    "label": "YouTube",
+    "handle": "Alex Builds",
+    "url": "https://youtube.com/@alexbuilds",
+    "accent": "#ff0000",
+    "gradient": "linear-gradient(135deg, #ff0000, #8b0000)",
+    "preview": {
+      "subscribers": "820",
+      "videos": "14",
+      "bio": "Coding tutorials, portfolio builds & dev vlogs.",
+      "latestVideo": "Building a Full Android Portfolio in React Native"
+    }
+  },
+  {
+    "id": "email",
+    "label": "Email",
+    "handle": "alex@example.com",
+    "url": "mailto:alex@example.com",
+    "accent": "#81c995",
+    "gradient": "linear-gradient(135deg, #1a3a2a, #0d2318)",
+    "preview": {
+      "bio": "Best way to reach me for collabs, freelance, or just a chat.",
+      "responseTime": "Usually within 24h ⚡"
+    }
+  }
+]
