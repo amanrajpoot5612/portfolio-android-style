@@ -48,25 +48,19 @@ export default function MainLayout() {
   const navigate = useNavigate();
 
   return (
-    // In MainLayout.jsx, replace the outer wrapper div:
-
-    <div className="min-h-screen flex items-center justify-center bg-gray-200 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-200">
       {/* DEVICE BODY */}
       <div
         className="
-    relative
-    p-[14px]
-    rounded-[42px]
-    bg-gradient-to-b
-    from-neutral-700
-    via-neutral-900
-    to-black
-    shadow-[0_40px_120px_rgba(0,0,0,0.6)]
-    "
-        style={{
-          transform: "scale(var(--device-scale, 1))",
-          transformOrigin: "top center",
-        }}
+      relative
+      p-[14px]
+      rounded-[42px]
+      bg-gradient-to-b
+      from-neutral-700
+      via-neutral-900
+      to-black
+      shadow-[0_40px_120px_rgba(0,0,0,0.6)]
+      "
       >
         {/* SIDE BUTTONS */}
 

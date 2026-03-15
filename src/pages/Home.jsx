@@ -10,31 +10,34 @@ import Clock from "../utils/Clock";
 
 const Home = () => {
   return (
-    // Home page wrapper
-<div
-  className="h-[calc(100%-26px)] w-full bg-cover bg-center bg-no-repeat flex flex-col"
-  style={{ backgroundImage: `url(${bgImage})` }}
->
-  {/* STATUS BAR */}
-  <div className="flex-shrink-0 flex justify-between items-center px-5 pt-6 pb-0 h-[48px]">
-    <Clock />
-    <div className="flex gap-1.5 items-center">
-      <img src={Mute}    alt="" className="w-3.5 h-3.5 invert" />
-      <img src={Signal}  alt="" className="w-3.5 h-3.5 invert" />
-      <img src={Battery} alt="" className="w-5 h-3.5 invert" />
+    <div
+      className="h-[calc(100%-26px)] w-full bg-cover bg-center bg-no-repeat flex flex-col items-center p-0.5 pb-2 gap-2"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      {/* 20px space */}
+        <div className="h-[20px] w-full flex justify-between">
+          <div className="left-top-b flex ">
+            <p>
+              <Clock />
+            </p>
+          </div>
+          <div className="right-top-b flex gap-1 items-center">
+            <img src={Mute} alt="" srcset="" className="w-4 h-4 invert-100" />
+            <img src={Signal} alt="" srcset="" className="w-4 h-4 invert-100" />
+            <img src={Battery} alt="" srcset="" className="w-4 h-4 invert-100" />
+          </div>
+        </div>
+
+      {/* slider takes remaining height */}
+      <div className="flex-1 w-full flex min-h-0 items-center justify-center">
+        <Slider className="w-full h-full" />
+      </div>
+
+      {/* dock takes content height */}
+      <div className="">
+        <Dock />
+      </div>
     </div>
-  </div>
-
-  {/* SLIDER — flex-1 + min-h-0 so it never bleeds into dock */}
-  <div className="flex-1 min-h-0 w-full overflow-hidden">
-    <Slider className="w-full h-full" />
-  </div>
-
-  {/* DOCK */}
-  <div className="flex-shrink-0 flex justify-center items-center px-3 py-2 pb-3">
-    <Dock />
-  </div>
-</div>
   );
 };
 
